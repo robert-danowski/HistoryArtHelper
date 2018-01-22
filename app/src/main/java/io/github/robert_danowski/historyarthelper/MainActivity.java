@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,6 +97,20 @@ public class MainActivity extends AppCompatActivity {
         answer3.setOnClickListener(null);
         answer4.setOnClickListener(null);
 
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(answer1.getLayoutParams());
+        params.weight=0.0f;
+
+        // set size to minimum
+        answer1.setLayoutParams(params);
+        answer2.setLayoutParams(params);
+        answer3.setLayoutParams(params);
+        answer4.setLayoutParams(params);
+
+        LinearLayout.LayoutParams newParams = new LinearLayout.LayoutParams(params);
+        if (marked==shouldBe) newParams.weight=0.4f;
+        else newParams.weight=0.2f;
+        marked.setLayoutParams(newParams);
+        shouldBe.setLayoutParams(newParams);
         shouldBe.setOnClickListener(clickNextQuestion);
     }
 
